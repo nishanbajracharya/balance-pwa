@@ -6,6 +6,7 @@
   color: #424242;
   font-weight: 700;
   line-height: 6vh;
+  margin: 0 5.33vw;
 }
 
 .expense-item {
@@ -27,5 +28,6 @@
 .expense-section-more {
   color: #558DF8;
   line-height: 5vh;
+  margin: 0 5.33vw;
   text-align: center;
 }
