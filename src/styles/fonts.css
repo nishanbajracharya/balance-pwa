@@ -1,0 +1,11 @@
+@font-face {
+  font-family: Avenir Next LT Pro;
+  src: local("Avenir Next LT Pro"),
+        url(../assets/fonts/AvenirNextLTPro-Regular.otf) format('otf');
+}
+
+@font-face {
+  font-family: Avenir Next LT Pro;
+  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf) format('otf');
+  font-weight: 500;
+}
