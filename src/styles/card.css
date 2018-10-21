@@ -21,14 +21,14 @@
   background: linear-gradient(143.13deg, #D94541 0%, #F59292 73.53%);
 }
 
+.card .card-title {
+  margin: 5.33vw;
+}
+
 .card .card-value {
   font-weight: 500;
   font-size: 12.8vw;
-  margin-top: 5.33vw;
-}
-
-.card .card-title {
-  margin: 5.33vw;
+  margin: 5.33vw 0 16vw;
 }
 
 .card-swipe {
