@@ -1,7 +1,7 @@
 {
   "main.css": "/balance-pwa/static/css/main.7fc07b68.chunk.css",
-  "main.js": "/balance-pwa/static/js/main.5b359530.chunk.js",
-  "main.js.map": "/balance-pwa/static/js/main.5b359530.chunk.js.map",
+  "main.js": "/balance-pwa/static/js/main.ea86088c.chunk.js",
+  "main.js.map": "/balance-pwa/static/js/main.ea86088c.chunk.js.map",
   "static/js/1.f1e786c9.chunk.js": "/balance-pwa/static/js/1.f1e786c9.chunk.js",
   "static/js/1.f1e786c9.chunk.js.map": "/balance-pwa/static/js/1.f1e786c9.chunk.js.map",
   "runtime~main.js": "/balance-pwa/static/js/runtime~main.46036c7c.js",
@@ -11,6 +11,6 @@
   "static/media/sync.4a9165a2.svg": "/balance-pwa/static/media/sync.4a9165a2.svg",
   "static/css/main.7fc07b68.chunk.css.map": "/balance-pwa/static/css/main.7fc07b68.chunk.css.map",
   "index.html": "/balance-pwa/index.html",
-  "precache-manifest.884aeed467e5fe3f57ada2b9dc5a68f3.js": "/balance-pwa/precache-manifest.884aeed467e5fe3f57ada2b9dc5a68f3.js",
+  "precache-manifest.acdc8f8f466a563f42cf337acb1b32f9.js": "/balance-pwa/precache-manifest.acdc8f8f466a563f42cf337acb1b32f9.js",
   "service-worker.js": "/balance-pwa/service-worker.js"
 }

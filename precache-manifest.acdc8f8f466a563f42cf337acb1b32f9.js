@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/balance-pwa/static/media/AvenirNextLTPro-Light.7be5411c.otf"
   },
   {
-    "revision": "5b35953039bf207edc63",
+    "revision": "ea86088c7eef9ecba132",
     "url": "/balance-pwa/static/css/main.7fc07b68.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/balance-pwa/static/media/AvenirNextLTPro-Regular.b62f8f0b.otf"
   },
   {
-    "revision": "5b35953039bf207edc63",
-    "url": "/balance-pwa/static/js/main.5b359530.chunk.js"
+    "revision": "ea86088c7eef9ecba132",
+    "url": "/balance-pwa/static/js/main.ea86088c.chunk.js"
   },
   {
     "revision": "751cdac5cfc9c37deefa6180a27a831d",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/balance-pwa/static/media/sync.4a9165a2.svg"
   },
   {
-    "revision": "b86aed27c1e764c4872028642d104e97",
+    "revision": "385ad6ca9fa1589a87a4f196f779a8a3",
     "url": "/balance-pwa/index.html"
   }
 ];
