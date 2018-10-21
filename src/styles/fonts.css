@@ -7,5 +7,17 @@
 @font-face {
   font-family: Avenir Next LT Pro;
   src: url(../assets/fonts/AvenirNextLTPro-Demi.otf) format('otf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Avenir Next LT Pro;
+  src: url(../assets/fonts/AvenirNextLTPro-Medium.otf) format('otf');
   font-weight: 500;
+}
+
+@font-face {
+  font-family: Avenir Next LT Pro;
+  src: url(../assets/fonts/AvenirNextLTPro-Light.otf) format('otf');
+  font-weight: 300;
 }

@@ -1,0 +1,31 @@
+.expense-section {
+  margin: 0 5.33vw;
+}
+
+.expense-section-title {
+  color: #424242;
+  font-weight: 700;
+  line-height: 6vh;
+}
+
+.expense-item {
+  display: flex;
+  height: 4.5vh;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expense-title {
+  color: #545454;
+}
+
+.expense-value {
+  color: #545454;
+  font-weight: 700;
+}
+
+.expense-section-more {
+  color: #558DF8;
+  line-height: 5vh;
+  text-align: center;
+}

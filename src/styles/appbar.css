@@ -1,0 +1,25 @@
+.appbar {
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appbar svg {
+  padding: 8px;
+  width: 7.2vh;
+}
+
+.appbar svg path {
+  fill: #558df8;
+}
+
+.appbar .app-title {
+  flex: 1;
+  display: flex;
+  color: #558df8;
+  font-size: 3.6vh;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+}

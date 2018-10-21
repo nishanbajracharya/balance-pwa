@@ -4,14 +4,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './store';
 
-import SwipeableView from './views/swipeableView';
+import Main from './views/main';
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <SwipeableView />
+          <Main />
         </PersistGate>
       </Provider>
     );
