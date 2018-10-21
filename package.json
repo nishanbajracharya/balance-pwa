@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
+    "numeral": "^2.0.6",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-scripts": "2.0.5",
+    "react-swipeable-views": "^0.13.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0"
   },

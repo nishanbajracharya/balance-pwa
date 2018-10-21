@@ -4,14 +4,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './store';
 
-import Card from './components/card';
+import SwipeableView from './views/swipeableView';
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Card title="Balance" value={100000} className="balance" />
+          <SwipeableView />
         </PersistGate>
       </Provider>
     );

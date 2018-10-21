@@ -1,9 +1,8 @@
 .card {
   color: #fff;
   width: 80vw;
-  height: 200px;
+  height: 30vh;
   display: flex;
-  margin: 0 auto;
   border-radius: 4px;
   align-items: center;
   flex-direction: column;
@@ -23,11 +22,20 @@
 }
 
 .card .card-value {
-  margin: 12px;
-  font-size: 48px;
   font-weight: 500;
+  margin-top: 3.2vw;
+  font-size: 12.8vw;
 }
 
 .card .card-title {
-  margin: 20px;
+  margin: 5.33vw;
+  font-size: 4.27vw;
+}
+
+.card-swipe {
+  padding: 0 7.5vw;
+}
+
+.card-swipe .react-swipeable-view-container > div {
+  padding: 5vw 2.5vw;
 }
