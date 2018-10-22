@@ -5,3 +5,5 @@ import './appbar.css';
 import './card.css';
 import './expense.css';
 import './button.css';
+import './animation.css';
+import './fullscreen.css';

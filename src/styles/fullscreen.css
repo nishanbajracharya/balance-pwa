@@ -1,0 +1,15 @@
+.fullscreen-page {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 100000;
+  background: #f7fafd;
+  animation: 150ms slide-up-fade-in;
+}
+
+.fullscreen-page.close {
+  opacity: 1;
+  animation: 150ms slide-down-fade-out;
+}

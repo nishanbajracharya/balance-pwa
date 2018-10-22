@@ -23,3 +23,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.appbar .app-title.sync {
+  margin-left: 48px;
+}
+
+.appbar .app-title.back {
+  margin-right: 48px;
+}

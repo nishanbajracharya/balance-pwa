@@ -2,14 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Appbar from './appbar';
+import ROUTES from '../constants/route';
 import Button from '../components/button';
 import SwipeableView from './swipeableView';
 import ExpenseItem from '../components/expenseItem';
 
 const Main = ({
-  expense = {}
+  expense = {},
+  history
 }) => <div>
-  <Appbar />
+  <Appbar sync/>
   <SwipeableView />
   <p className="expense-section-title">Recent Expenses</p>
   <ul className="expense-section">
@@ -19,7 +21,7 @@ const Main = ({
   </ul>
   <p className="expense-section-more">more</p>
   <div className="button-container">
-    <Button label="Add Expense" primary/>
+    <Button label="Add Expense" primary onClick={() => history.push(ROUTES.ADD_EXPENSE)}/>
     <Button label="Add Balance" secondary/>
   </div>
 </div>;

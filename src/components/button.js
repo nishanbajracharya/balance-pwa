@@ -4,8 +4,9 @@ import classnames from 'classnames';
 const Button = ({
   label,
   primary,
-  secondary
-}) => <button className={
+  secondary,
+  onClick = f => f,
+}) => <button onClick={onClick} className={
   classnames('button', {
     primary,
     secondary

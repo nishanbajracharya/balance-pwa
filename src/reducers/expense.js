@@ -11,7 +11,7 @@ const INITIAL_STATE = {
       date: '2018-02-05T11:00:00Z'
     }
   },
-  list: [1, 2, 1, 1, 1]
+  list: []
 };
 
 const expense = (state = INITIAL_STATE) => state;
