@@ -17,7 +17,7 @@ class AddExpense extends React.PureComponent {
   }
 
   handleAddExpense = (value, title) => {
-    this.props.addExpense(value, title);
+    value && this.props.addExpense(value, title);
 
     this.fs.handleClose();
   }

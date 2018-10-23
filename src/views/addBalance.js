@@ -17,7 +17,7 @@ class AddBalance extends React.PureComponent {
   }
 
   handleAddBalance = value => {
-    this.props.addBalance(value);
+    value && this.props.addBalance(value);
 
     this.fs.handleClose();
   }
