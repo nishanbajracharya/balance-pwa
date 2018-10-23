@@ -6,10 +6,10 @@ export default class Input extends React.PureComponent {
     super();
 
     this.state = {
-      value: null,
       edited: false,
       focused: false,
       touched: false,
+      value: undefined,
     };
   }
 
@@ -27,6 +27,7 @@ export default class Input extends React.PureComponent {
 
   onInput = e => {
     this.props.onInput(e);
+    this.props.onValueChange(e.target.value);
 
     this.setState({ edited: true, value: e.target.value });
   };
@@ -34,7 +35,6 @@ export default class Input extends React.PureComponent {
   render() {
     return (
       <input
-        {...this.props}
         onBlur={this.onBlur}
         onFocus={this.onFocus}
         onInput={this.onInput}
@@ -52,5 +52,6 @@ Input.defaultProps = {
   onBlur: f => f,
   onFocus: f => f,
   onInput: f => f,
+  onValueChange: f => f,
   activeClassName: 'active',
 };

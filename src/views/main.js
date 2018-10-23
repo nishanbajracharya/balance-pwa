@@ -5,7 +5,7 @@ import Appbar from './appbar';
 import ROUTES from '../constants/route';
 import Button from '../components/button';
 import SwipeableView from './swipeableView';
-import ExpenseItem from '../components/expenseItem';
+import ExpenseItem from '../components/listItem';
 
 const Main = ({ expense = {}, history }) => (
   <div>
