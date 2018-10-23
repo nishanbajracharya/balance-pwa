@@ -20,8 +20,9 @@ const Main = ({ expense = {}, history }) => (
           value={expense.data[id].value}
         />
       ))}
+      {expense.list.length === 0 && <li className="expense-item center empty">Nothing to show</li>}
     </ul>
-    <p className="expense-section-more">more</p>
+    {expense.list.length > 0 && <p className="expense-section-more">more</p>}
     <div className="button-container">
       <Button
         primary

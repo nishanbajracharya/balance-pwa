@@ -17,6 +17,14 @@
   justify-content: space-between;
 }
 
+.expense-item.center{
+  justify-content: center;
+}
+
+.expense-item.empty {
+  color: #b2b3b4;
+}
+
 .expense-title {
   color: #545454;
 }

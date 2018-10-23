@@ -25,3 +25,7 @@
 .input-container {
   margin: 5.33vw;
 }
+
+.input-container-title {
+  font-weight: 500;
+}
