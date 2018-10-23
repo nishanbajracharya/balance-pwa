@@ -1,19 +1,30 @@
+import uniqid from 'uniqid';
+
+import * as expenseActions from '../actions/expense';
+
 const INITIAL_STATE = {
-  data: {
-    1: {
-      value: 750,
-      title: 'Restaurant - Ginza',
-      date: '2018-02-05T11:00:00Z'
-    },
-    2: {
-      value: 1250,
-      title: 'Shopping - Bhatbhateni',
-      date: '2018-02-05T11:00:00Z'
-    }
-  },
-  list: []
+  data: {},
+  list: [],
 };
 
-const expense = (state = INITIAL_STATE) => state;
+const expense = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case expenseActions.ADD_EXPENSE:
+      const id = uniqid();
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [id]: {
+            ...action.payload,
+            addedDate: new Date().toISOString(),
+          },
+        },
+        list: [id, ...state.list],
+      };
+    default:
+      return state;
+  }
+};
 
 export default expense;

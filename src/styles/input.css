@@ -1,0 +1,26 @@
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #545454;
+  margin: 5.33vw 0;
+  background: none;
+  line-height: 8vw;
+  border-bottom: 1px solid #b2b3b4;
+}
+
+.input:focus {
+  border-bottom-color: #558df8;
+}
+
+.input::-webkit-input-placeholder {
+  color: #b2b3b4;
+}
+
+.input::-moz-placeholder {
+  color: #b2b3b4;
+}
+
+.input-container {
+  margin: 5.33vw;
+}

@@ -1,6 +1,10 @@
 .button-container {
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  margin: 3.2vw 5.33vw 0;
+  position: absolute;
+  margin: 3.2vw 5.33vw;
   flex-direction: column;
 }
 
@@ -11,13 +15,13 @@
   cursor: pointer;
   margin: 1.5vh 0;
   min-height: 6vh;
-  transition: 500ms;
   border-radius: 4px;
   align-items: center;
   background-color: none;
   justify-content: center;
   text-transform: uppercase;
   background-position: center;
+  transition: background 500ms;
   border: 1px solid transparent;
   -webkit-tap-highlight-color: transparent;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);

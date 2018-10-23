@@ -1,5 +1,6 @@
 .expense-section {
   margin: 0 5.33vw;
+  min-height: 24vh;
 }
 
 .expense-section-title {
