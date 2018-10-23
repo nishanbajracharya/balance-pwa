@@ -36,6 +36,7 @@ export default class Input extends React.PureComponent {
     return (
       <input
         onBlur={this.onBlur}
+        type={this.props.type}
         onFocus={this.onFocus}
         onInput={this.onInput}
         value={this.state.value}
