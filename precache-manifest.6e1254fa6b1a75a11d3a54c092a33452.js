@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/balance-pwa/static/media/AvenirNextLTPro-Regular.b62f8f0b.otf"
   },
   {
-    "revision": "80721b0cc66390ef2d26",
-    "url": "/balance-pwa/static/css/main.95923fb5.chunk.css"
+    "revision": "3d1a4131c2934ba8eb4a",
+    "url": "/balance-pwa/static/css/main.9fd2fef3.chunk.css"
   },
   {
     "revision": "d793cbe9012527db0c2c",
@@ -20,16 +20,16 @@ self.__precacheManifest = [
     "url": "/balance-pwa/static/media/AvenirNextLTPro-Medium.751cdac5.otf"
   },
   {
-    "revision": "80721b0cc66390ef2d26",
-    "url": "/balance-pwa/static/js/main.80721b0c.chunk.js"
-  },
-  {
-    "revision": "472d97a823bc74eca3293c8198208d89",
-    "url": "/balance-pwa/static/media/AvenirNextLTPro-Demi.472d97a8.otf"
+    "revision": "3d1a4131c2934ba8eb4a",
+    "url": "/balance-pwa/static/js/main.3d1a4131.chunk.js"
   },
   {
     "revision": "7be5411c85de426f348a8754f082d17e",
     "url": "/balance-pwa/static/media/AvenirNextLTPro-Light.7be5411c.otf"
+  },
+  {
+    "revision": "472d97a823bc74eca3293c8198208d89",
+    "url": "/balance-pwa/static/media/AvenirNextLTPro-Demi.472d97a8.otf"
   },
   {
     "revision": "bcd47f6df43d8c4432b3062b3d0e0e72",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/balance-pwa/static/media/sync.4a9165a2.svg"
   },
   {
-    "revision": "e713c295c3d00d4b4f9c1263e3ced491",
+    "revision": "55945aa7fe8b44bb0c944af4c0c036fb",
     "url": "/balance-pwa/index.html"
   }
 ];
