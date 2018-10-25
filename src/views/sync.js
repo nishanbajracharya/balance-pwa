@@ -34,7 +34,7 @@ class Sync extends React.PureComponent {
         </div>
         <p className="sync-or">OR</p>
         <div className="full-width">
-          <Input multiline onValueChange={code => this.setState({ code })} />
+          <Input placeholder="Paste your account signature here" multiline onValueChange={code => this.setState({ code })} />
           <Button label="Sync Balance" primary />
         </div>
         <p className="sync-message center">
