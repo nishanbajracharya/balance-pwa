@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Input from '../components/input';
 import Button from '../components/button';
+import * as syncActions from '../actions/sync';
 import Fullscreen from '../components/fullscreen';
 
 class Sync extends React.PureComponent {
@@ -35,7 +36,7 @@ class Sync extends React.PureComponent {
         <p className="sync-or">OR</p>
         <div className="full-width">
           <Input placeholder="Paste your account signature here" multiline onValueChange={code => this.setState({ code })} />
-          <Button label="Sync Balance" primary />
+          <Button label="Sync Balance" primary onClick={() => this.state.code && this.props.sync(this.state.code)} />
         </div>
         <p className="sync-message center">
           Last Synced: {this.props.lastSynced}
@@ -47,4 +48,7 @@ class Sync extends React.PureComponent {
 
 export default connect(state => ({
   code: btoa(JSON.stringify(state)),
+}),
+dispatch => ({
+  sync: code => dispatch(syncActions.syncAccount(code))
 }))(Sync);

@@ -31,6 +31,7 @@
 }
 
 textarea.input {
-  margin: 2.5vw 0;
   height: 21vh;
+  margin: 2.5vw 0;
+  font-family: monospace;
 }

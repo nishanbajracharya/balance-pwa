@@ -7,7 +7,9 @@
 .sync-code {
   color: #848484;
   margin: 5.33vw;
+  overflow: auto;
   padding: 5.33vw;
+  max-height: 21vh;
   border-radius: 4px;
   text-align: center;
   word-break: break-all;
