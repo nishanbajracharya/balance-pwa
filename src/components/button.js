@@ -5,9 +5,10 @@ const Button = ({
   label,
   primary,
   secondary,
+  className,
   onClick = f => f,
 }) => <button onClick={onClick} className={
-  classnames('button', {
+  classnames('button', className, {
     primary,
     secondary
   })

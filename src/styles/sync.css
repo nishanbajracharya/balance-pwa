@@ -1,0 +1,32 @@
+.sync-title {
+  color: #424242;
+  font-weight: 700;
+  margin: 0 5.33vw;
+}
+
+.sync-code {
+  color: #848484;
+  margin: 5.33vw;
+  padding: 5.33vw;
+  border-radius: 4px;
+  text-align: center;
+  word-break: break-all;
+  font-family: monospace;
+  border: 1px solid #b2b3b4;
+}
+
+.sync-message {
+  color: #848484;
+  font-weight: 300;
+  margin: 0 5.33vw;
+}
+
+.sync-message.center {
+  text-align: center;
+}
+
+.sync-or {
+  margin: 4vw 0;
+  color: #545454;
+  text-align: center;
+}

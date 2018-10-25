@@ -29,3 +29,8 @@
 .input-container-title {
   font-weight: 500;
 }
+
+textarea.input {
+  margin: 2.5vw 0;
+  height: 21vh;
+}

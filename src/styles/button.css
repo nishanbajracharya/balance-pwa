@@ -60,3 +60,11 @@
   background: #457de8;
   background-size: 100%;
 }
+
+.full-width {
+  margin: 0 5.33vw;
+}
+
+.full-width .button {
+  width: 100%;
+}

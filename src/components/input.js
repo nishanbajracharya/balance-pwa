@@ -1,6 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 
+const Component = ({ multiline, ...props }) =>
+  multiline ? <textarea {...props} /> : <input {...props} />;
+
 export default class Input extends React.PureComponent {
   constructor() {
     super();
@@ -34,12 +37,13 @@ export default class Input extends React.PureComponent {
 
   render() {
     return (
-      <input
+      <Component
         onBlur={this.onBlur}
         type={this.props.type}
         onFocus={this.onFocus}
         onInput={this.onInput}
         value={this.state.value}
+        multiline={this.props.multiline}
         placeholder={this.props.placeholder}
         className={classnames('input', {
           [this.props.activeClassName]: this.state.focused,
