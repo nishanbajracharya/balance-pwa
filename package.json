@@ -15,15 +15,18 @@
     "react-swipeable-views": "^0.13.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
+    "serve": "^10.0.2",
     "uniqid": "^5.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -d build",
+    "start:dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
