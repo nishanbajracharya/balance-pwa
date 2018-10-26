@@ -13,3 +13,8 @@
   opacity: 1;
   animation: 150ms slide-down-fade-out;
 }
+
+.fullscreen-page .scroll-content{
+  overflow: auto;
+  height: calc(100vh - 60px);
+}

@@ -3,11 +3,19 @@
   min-height: 24vh;
 }
 
+.expense-section-view {
+  margin: 0 5.33vw;
+}
+
 .expense-section-title {
   color: #424242;
   font-weight: 700;
   line-height: 6vh;
   margin: 0 5.33vw;
+}
+
+.expense-section-title.center {
+  text-align: center;
 }
 
 .expense-item {

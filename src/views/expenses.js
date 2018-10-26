@@ -6,14 +6,43 @@ import isBefore from 'date-fns/is_before';
 import isSameDay from 'date-fns/is_same_day';
 import isYesterday from 'date-fns/is_yesterday';
 
+import ExpenseItem from '../components/listItem';
 import Fullscreen from '../components/fullscreen';
 
+const DAY = {
+  today: 'Today',
+  before: 'Before',
+  yesterday: 'Yesterday',
+  twoDaysAgo: 'Two Days Ago',
+}
+
+const ExpenseList = ({
+  title,
+  list,
+  data
+}) => <div className="expense-section-view">
+  <p className="expense-section-title center">{title}</p>
+  <ul>
+    {
+      list.map(id => <ExpenseItem title={data[id].title} value={data[id].value}/>)
+    }
+  </ul>
+</div>
+
 const Expenses = ({
-  history
-}) => <Fullscreen onRequestClose={() => history.goBack()} title="Expense"></Fullscreen>;
+  data,
+  history,
+  segments
+}) => <Fullscreen onRequestClose={() => history.goBack()} title="Expense">
+  <div className="scroll-content">
+  {
+    segments.list.map(day => <ExpenseList title={DAY[day]} list={segments[day]} data={data}/>)
+  }
+  </div>
+</Fullscreen>;
 
 export default connect(state => ({
-  expense: state.expense,
+  data: state.expense.data,
   segments: (() => {
     const data = state.expense.data;
     const list = state.expense.list;
