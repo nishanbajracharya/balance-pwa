@@ -31,7 +31,7 @@ class Main extends React.PureComponent {
         ))}
         {this.props.expense.list.length === 0 && <li className="expense-item center empty">Nothing to show</li>}
       </ul>
-      {this.props.expense.list.length > 0 && <p className="expense-section-more">more</p>}
+      {this.props.expense.list.length > 0 && <p className="expense-section-more" onClick={() => this.props.history.push(ROUTES.EXPENSE)}>more</p>}
       <div className="button-container">
         <Button
           primary
