@@ -61,6 +61,7 @@ class Sync extends React.PureComponent {
 
 export default connect(state => ({
   code: btoa(JSON.stringify(state)),
+  lastSynced: state.sync.lastSynced || 'Never'
 }),
 dispatch => ({
   sync: code => dispatch(syncActions.syncAccount(code))
