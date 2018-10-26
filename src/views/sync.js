@@ -15,6 +15,19 @@ class Sync extends React.PureComponent {
     };
   }
 
+  copyToClipboard = text => {
+    const textField = document.createElement('textarea');
+    textField.innerText = text;
+
+    const parentElement = document.body;
+    parentElement.appendChild(textField);
+
+    textField.select();
+    document.execCommand('copy');
+
+    parentElement.removeChild(textField);
+  }
+
   render() {
     return (
       <Fullscreen
@@ -31,7 +44,7 @@ class Sync extends React.PureComponent {
           to sync with it.
         </p>
         <div className="full-width">
-          <Button label="Copy Signature" primary />
+          <Button label="Copy Signature" primary onClick={() => this.copyToClipboard(this.props.code)}/>
         </div>
         <p className="sync-or">OR</p>
         <div className="full-width">
