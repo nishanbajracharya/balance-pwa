@@ -12,7 +12,7 @@ const persistConfig = {
 
 const reducer = (state, action) => {
   if (action.type === syncActions.SYNC_ACCOUNT) {
-    state = atob(action.payload.code);
+    state = JSON.parse(atob(action.payload.code));
   }
 
   return rootReducer(state, action);

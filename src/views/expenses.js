@@ -24,7 +24,7 @@ const ExpenseList = ({
   <p className="expense-section-title center">{title}</p>
   <ul>
     {
-      list.map(id => <ExpenseItem title={data[id].title} value={data[id].value}/>)
+      list.map((id, key) => <ExpenseItem key={key} title={data[id].title} value={data[id].value}/>)
     }
   </ul>
 </div>
@@ -36,7 +36,7 @@ const Expenses = ({
 }) => <Fullscreen onRequestClose={() => history.goBack()} title="Expense">
   <div className="scroll-content">
   {
-    segments.list.map(day => <ExpenseList title={DAY[day]} list={segments[day]} data={data}/>)
+    segments.list.map((day, key) => <ExpenseList key={key} title={DAY[day]} list={segments[day]} data={data}/>)
   }
   </div>
 </Fullscreen>;

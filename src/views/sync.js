@@ -1,4 +1,5 @@
 import React from 'react';
+import _omit from 'lodash.omit';
 import { connect } from 'react-redux';
 
 import Input from '../components/input';
@@ -60,7 +61,7 @@ class Sync extends React.PureComponent {
 }
 
 export default connect(state => ({
-  code: btoa(JSON.stringify(state)),
+  code: btoa(JSON.stringify(_omit(state, '_persist'))),
   lastSynced: state.sync.lastSynced || 'Never'
 }),
 dispatch => ({
