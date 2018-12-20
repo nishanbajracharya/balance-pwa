@@ -27,7 +27,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "now-build": "react-scripts build && mv build dist"
   },
   "eslintConfig": {
     "extends": "react-app"
