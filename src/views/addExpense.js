@@ -26,7 +26,7 @@ class AddExpense extends React.PureComponent {
     return <Fullscreen ref={c => this.fs = c} onRequestClose={() => this.props.history.goBack()} title="Add Expense">
       <div className="input-container">
         <p className="input-container-title">Add what you spent on and your expenses.</p>
-        <Input type="number" placeholder="How much did you spend?" onValueChange={value => this.setState({ value: parseInt(value) })} />
+        <Input type="number" placeholder="How much did you spend?" onValueChange={value => this.setState({ value:Math.abs(parseInt(value)) })} />
         <Input placeholder="What did you spend on?" onValueChange={title => this.setState({ title })} />
       </div>
       <div className="button-container">
