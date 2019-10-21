@@ -26,7 +26,7 @@ class AddBalance extends React.PureComponent {
     return <Fullscreen ref={c => this.fs = c} onRequestClose={() => this.props.history.goBack()} title="Add Balance">
       <div className="input-container">
         <p className="input-container-title">Add some amount to your current balance.</p>
-        <Input type="number" placeholder="How much do you want to add?" onValueChange={value => this.setState({ value: parseInt(value) })} />
+        <Input type="number" placeholder="How much do you want to add?" onValueChange={value => this.setState({ value:Math.abs(parseInt(value)) })} />
         <BalanceItem title="Current Balance" value={this.props.balance.current} />
         <BalanceItem title="New Balance" value={this.props.balance.current + this.state.value} />
       </div>
