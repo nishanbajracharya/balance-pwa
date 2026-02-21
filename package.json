@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.3",
     "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
@@ -11,15 +14,13 @@
     "numeral": "^2.0.6",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^6.30.3",
     "react-swipeable-views": "^0.13.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "serve": "^10.0.2",
     "uniqid": "^5.0.3",
     "vite": "^7.3.1",
-    "vite-plugin-svgr": "^4.5.0",
     "vite-tsconfig-paths": "^6.1.1"
   },
   "scripts": {
@@ -40,6 +41,16 @@
   ],
   "homepage": "https://nishanbajracharya.github.io/balance-pwa/",
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/lodash.omit": "^4.5.9",
+    "@types/numeral": "^2.0.5",
+    "@types/prop-types": "^15.7.15",
+    "@types/react-redux": "^7.1.34",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-swipeable-views-core": "^0.13.3",
+    "@types/react-swipeable-views-utils": "^0.13.7",
+    "@types/uniqid": "^5.3.4",
+    "gh-pages": "^2.0.1",
+    "vite-plugin-svgr": "^4.5.0"
   }
 }
