@@ -4,30 +4,26 @@ import { persistStore, persistReducer } from 'redux-persist';
 
 import rootReducer from './reducers';
 import * as syncActions from './actions/sync';
-import type { SyncActions } from './actions/sync';
 
 const persistConfig = {
   key: 'root',
   storage,
 };
 
-// Override reducer to handle SYNC_ACCOUNT payload
-const reducer = (
-  state: ReturnType<typeof rootReducer> | undefined,
-  action: SyncActions
-) => {
-  if (action.type === syncActions.SYNC_ACCOUNT) {
-    try {
-      state = JSON.parse(atob(action.payload.code));
-    } catch {
-      // ignore malformed sync payload
+// Use `any` for action to satisfy redux-persist
+const persistedReducer = persistReducer(
+  persistConfig,
+  (state: ReturnType<typeof rootReducer> | undefined, action: any) => {
+    if (action.type === syncActions.SYNC_ACCOUNT) {
+      try {
+        state = JSON.parse(atob(action.payload.code));
+      } catch {
+        // ignore malformed sync payload
+      }
     }
+    return rootReducer(state, action);
   }
-
-  return rootReducer(state, action);
-};
-
-const persistedReducer = persistReducer(persistConfig, reducer);
+);
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -36,6 +32,6 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-// Typed hooks support
+// Typed hooks
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

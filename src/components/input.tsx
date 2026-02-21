@@ -1,9 +1,10 @@
-import classnames from 'classnames';
 import { useState, FocusEvent, ChangeEvent } from 'react';
+import classnames from 'classnames';
 
 export type InputProps = {
   type?: string;
-  className: string;
+  value?: string;
+  className?: string;
   multiline?: boolean;
   placeholder?: string;
   activeClassName?: string;
@@ -22,7 +23,7 @@ const Component = ({
   multiline,
   className,
   placeholder,
-}: InputProps & { value: string }) =>
+}: InputProps) =>
   multiline ? (
     <textarea
       value={value}
@@ -46,6 +47,7 @@ const Component = ({
 
 export default function Input({
   type,
+  value = '',
   placeholder,
   multiline = false,
   onBlur = () => {},
@@ -55,7 +57,6 @@ export default function Input({
   activeClassName = 'active',
 }: InputProps) {
   const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState('');
 
   const _onFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     onFocus(e);
@@ -72,7 +73,6 @@ export default function Input({
   ) => {
     onChange(e);
     onValueChange(e.target.value);
-    setValue(e.target.value);
   };
 
   return (

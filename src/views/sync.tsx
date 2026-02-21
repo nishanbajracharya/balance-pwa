@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
 import omit from 'lodash.omit';
+import { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Input from '../components/input';
@@ -7,7 +7,6 @@ import Button from '../components/button';
 import * as syncActions from '../actions/sync';
 import Fullscreen from '../components/fullscreen';
 
-// Adjust this import based on your store setup
 import type { RootState, AppDispatch } from '../store';
 
 type SyncProps = {
@@ -19,6 +18,7 @@ type SyncProps = {
 export default function Sync({ history }: SyncProps) {
   const dispatch = useDispatch<AppDispatch>();
 
+  // Get encoded state excluding _persist
   const code = useSelector((state: RootState) =>
     btoa(JSON.stringify(omit(state, '_persist')))
   );
@@ -27,24 +27,37 @@ export default function Sync({ history }: SyncProps) {
     (state: RootState) => state.sync.lastSynced || 'Never'
   );
 
-  const [localCode, setLocalCode] = useState<string | undefined>(undefined);
+  const [localCode, setLocalCode] = useState<string>('');
 
-  const copyToClipboard = useCallback((text: string) => {
-    const textField = document.createElement('textarea');
-    textField.innerText = text;
-
-    const parentElement = document.body;
-    parentElement.appendChild(textField);
-
-    textField.select();
-    document.execCommand('copy');
-
-    parentElement.removeChild(textField);
-  }, []);
+  const copyToClipboard = async (text: string) => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        console.log('Copied to clipboard!');
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+      }
+    } else {
+      // Fallback for older browsers
+      const textField = document.createElement('textarea');
+      textField.value = text;
+      textField.style.position = 'fixed'; // prevent scrolling
+      document.body.appendChild(textField);
+      textField.select();
+      try {
+        document.execCommand('copy'); // deprecated, fallback only
+        console.log('Copied to clipboard (fallback)');
+      } catch (err) {
+        console.error('Fallback copy failed', err);
+      }
+      document.body.removeChild(textField);
+    }
+  };
 
   const handleSync = useCallback(() => {
-    if (localCode) {
+    if (localCode.trim()) {
       dispatch(syncActions.syncAccount(localCode));
+      setLocalCode(''); // optional: clear input after syncing
     }
   }, [dispatch, localCode]);
 
@@ -66,8 +79,8 @@ export default function Sync({ history }: SyncProps) {
 
       <div className="full-width">
         <Button
-          label="Copy Signature"
           primary
+          label="Copy Signature"
           onClick={() => copyToClipboard(code)}
         />
       </div>
@@ -76,9 +89,10 @@ export default function Sync({ history }: SyncProps) {
 
       <div className="full-width">
         <Input
-          placeholder="Paste your account signature here"
           multiline
-          onValueChange={(value: string) => setLocalCode(value)}
+          value={localCode}
+          onValueChange={setLocalCode}
+          placeholder="Paste your account signature here"
         />
         <Button label="Sync Balance" primary onClick={handleSync} />
       </div>
