@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ROUTES from '../constants/route';
 import Back from '../assets/images/back.svg?react';
@@ -18,7 +18,7 @@ function Appbar({
   title = 'Balance',
   onRequestClose = () => {},
 }: AppbarProps) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className="appbar">
@@ -31,7 +31,7 @@ function Appbar({
       >
         {title}
       </p>
-      {sync && <Sync onClick={() => history.push(ROUTES.SYNC)} />}
+      {sync && <Sync onClick={() => navigate(ROUTES.SYNC)} />}
     </div>
   );
 }

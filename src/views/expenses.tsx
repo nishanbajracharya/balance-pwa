@@ -1,32 +1,23 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import isToday from 'date-fns/isToday';
-import subDays from 'date-fns/subDays';
-import isBefore from 'date-fns/isBefore';
-import isSameDay from 'date-fns/isSameDay';
-import isYesterday from 'date-fns/isYesterday';
+import { isToday, subDays, isBefore, isSameDay, isYesterday } from 'date-fns';
 
 import ExpenseItem from '../components/listItem';
 import Fullscreen from '../components/fullscreen';
 import type { RootState } from '../store';
+import type { ExpenseItem as ReduxExpenseItem } from '../reducers/expense';
 
 const DAY = {
   today: 'Today',
-  before: 'Before',
   yesterday: 'Yesterday',
   twoDaysAgo: 'Two Days Ago',
+  before: 'Before',
 } as const;
 
 export type ExpenseListProps = {
-  title: keyof typeof DAY;
+  title: string;
   list: string[];
-  data: {
-    [id: string]: {
-      value: string;
-      title: keyof typeof DAY;
-      addedDate: Date;
-    };
-  };
+  data: Record<string, ReduxExpenseItem>;
 };
 
 const ExpenseList = ({ title, list, data }: ExpenseListProps) => (
@@ -54,35 +45,36 @@ export default function Expenses({ history }: ExpensesProps) {
     const twoDays = subDays(new Date(), 2);
     const threeDays = subDays(new Date(), 3);
 
-    const today = list.filter((id) => isToday(data[id].addedDate));
-    const yesterday = list.filter((id) => isYesterday(data[id].addedDate));
-    const twoDaysAgo = list.filter((id) =>
-      isSameDay(data[id].addedDate, twoDays)
+    const today = list.filter((id) => isToday(new Date(data[id].addedDate)));
+    const yesterday = list.filter((id) =>
+      isYesterday(new Date(data[id].addedDate))
     );
-    const before = list.filter((id) => isBefore(data[id].addedDate, threeDays));
+    const twoDaysAgo = list.filter((id) =>
+      isSameDay(new Date(data[id].addedDate), twoDays)
+    );
+    const before = list.filter((id) =>
+      isBefore(new Date(data[id].addedDate), threeDays)
+    );
 
-    const sortedData = {
-      today,
-      before,
-      yesterday,
-      twoDaysAgo,
-    };
+    const sortedData = { today, yesterday, twoDaysAgo, before };
 
     const sortedList = (
       ['today', 'yesterday', 'twoDaysAgo', 'before'] as const
     ).filter((key) => sortedData[key].length);
 
-    return {
-      ...sortedData,
-      list: sortedList,
-    };
+    return { ...sortedData, list: sortedList };
   }, [data, list]);
 
   return (
     <Fullscreen onRequestClose={() => history.goBack()} title="Expense">
       <div className="scroll-content">
         {segments.list.map((day) => (
-          <ExpenseList key={day} title={day} list={segments[day]} data={data} />
+          <ExpenseList
+            key={day}
+            title={DAY[day]}
+            list={segments[day]}
+            data={data}
+          />
         ))}
       </div>
     </Fullscreen>

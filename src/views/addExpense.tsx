@@ -1,53 +1,63 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Input from '../components/input';
 import Button from '../components/button';
-import Fullscreen from '../components/fullscreen';
+import Fullscreen, { FullscreenHandle } from '../components/fullscreen';
 import * as expenseActions from '../actions/expense';
+import type { AppDispatch } from '../store';
 
-class AddExpense extends React.PureComponent {
-  constructor() {
-    super();
+type AddExpenseProps = {
+  history: {
+    goBack: () => void;
+  };
+};
 
-    this.state = {
-      value: 0,
-      title: undefined
-    };
-  }
+export default function AddExpense({ history }: AddExpenseProps) {
+  const dispatch = useDispatch<AppDispatch>();
+  const fsRef = useRef<FullscreenHandle>(null);
 
-  handleAddExpense = (value, title) => {
-    value && this.props.addExpense(value, title);
+  const [value, setValue] = useState(0);
+  const [title, setTitle] = useState('');
 
-    this.fs.handleClose();
-  }
+  const handleAddExpense = () => {
+    if (value > 0 && title) {
+      dispatch(expenseActions.addExpense(value, title));
+    }
+    fsRef.current?.handleClose();
+  };
 
-  render() {
-    return <Fullscreen ref={c => this.fs = c} onRequestClose={() => this.props.history.goBack()} title="Add Expense">
+  return (
+    <Fullscreen
+      ref={fsRef}
+      onRequestClose={() => history.goBack()}
+      title="Add Expense"
+    >
       <div className="input-container">
-        <p className="input-container-title">Add what you spent on and your expenses.</p>
-        <Input type="number" placeholder="How much did you spend?" onValueChange={value => this.setState({ value:Math.abs(parseInt(value)) })} />
-        <Input placeholder="What did you spend on?" onValueChange={title => this.setState({ title })} />
-      </div>
-      <div className="button-container">
-        <Button
-          primary
-          label="Submit"
-          onClick={() => this.handleAddExpense(this.state.value, this.state.title)}
+        <p className="input-container-title">
+          Add what you spent on and your expenses.
+        </p>
+
+        <Input
+          type="number"
+          placeholder="How much did you spend?"
+          onValueChange={(v: string) => setValue(Math.abs(parseInt(v) || 0))}
         />
+
+        <Input
+          placeholder="What did you spend on?"
+          onValueChange={(t: string) => setTitle(t)}
+        />
+      </div>
+
+      <div className="button-container">
+        <Button primary label="Submit" onClick={handleAddExpense} />
         <Button
           secondary
           label="Cancel"
-          onClick={() => this.fs.handleClose()}
+          onClick={() => fsRef.current?.handleClose()}
         />
       </div>
-    </Fullscreen>;
-  }
+    </Fullscreen>
+  );
 }
-
-export default connect(state => ({
-  balance: state.balance
-}),
-dispatch => ({
-  addExpense: (value, title) => dispatch(expenseActions.addExpense(value, title))
-}))(AddExpense);

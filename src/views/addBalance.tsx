@@ -1,54 +1,62 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import { useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Input from '../components/input';
 import Button from '../components/button';
 import BalanceItem from '../components/listItem';
-import Fullscreen from '../components/fullscreen';
 import * as balanceActions from '../actions/balance';
+import type { RootState, AppDispatch } from '../store';
+import Fullscreen, { FullscreenHandle } from '../components/fullscreen';
 
-class AddBalance extends React.PureComponent {
-  constructor() {
-    super();
+type AddBalanceProps = {
+  history: {
+    goBack: () => void;
+  };
+};
 
-    this.state = {
-      value: 0
-    };
-  }
+export default function AddBalance({ history }: AddBalanceProps) {
+  const dispatch = useDispatch<AppDispatch>();
+  const balance = useSelector((state: RootState) => state.balance.current);
 
-  handleAddBalance = value => {
-    value && this.props.addBalance(value);
+  const [value, setValue] = useState(0);
+  const fsRef = useRef<FullscreenHandle>(null);
 
-    this.fs.handleClose();
-  }
+  const handleAddBalance = () => {
+    if (value > 0) {
+      dispatch(balanceActions.addBalance(value));
+    }
+    fsRef.current?.handleClose();
+  };
 
-  render() {
-    return <Fullscreen ref={c => this.fs = c} onRequestClose={() => this.props.history.goBack()} title="Add Balance">
+  return (
+    <Fullscreen
+      ref={fsRef}
+      onRequestClose={() => history.goBack()}
+      title="Add Balance"
+    >
       <div className="input-container">
-        <p className="input-container-title">Add some amount to your current balance.</p>
-        <Input type="number" placeholder="How much do you want to add?" onValueChange={value => this.setState({ value:Math.abs(parseInt(value)) })} />
-        <BalanceItem title="Current Balance" value={this.props.balance.current} />
-        <BalanceItem title="New Balance" value={this.props.balance.current + this.state.value} />
-      </div>
-      <div className="button-container">
-        <Button
-          primary
-          label="Submit"
-          onClick={() => this.handleAddBalance(this.state.value)}
+        <p className="input-container-title">
+          Add some amount to your current balance.
+        </p>
+
+        <Input
+          type="number"
+          placeholder="How much do you want to add?"
+          onValueChange={(v: string) => setValue(Math.abs(parseInt(v) || 0))}
         />
+
+        <BalanceItem title="Current Balance" value={balance} />
+        <BalanceItem title="New Balance" value={balance + value} />
+      </div>
+
+      <div className="button-container">
+        <Button primary label="Submit" onClick={handleAddBalance} />
         <Button
           secondary
           label="Cancel"
-          onClick={() => this.fs.handleClose()}
+          onClick={() => fsRef.current?.handleClose()}
         />
       </div>
-    </Fullscreen>;
-  }
+    </Fullscreen>
+  );
 }
-
-export default connect(state => ({
-  balance: state.balance
-}),
-dispatch => ({
-  addBalance: value => dispatch(balanceActions.addBalance(value))
-}))(AddBalance);

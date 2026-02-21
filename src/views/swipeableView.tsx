@@ -1,56 +1,44 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { mod } from 'react-swipeable-views-core';
-import SwipeableViews from 'react-swipeable-views';
-import { virtualize } from 'react-swipeable-views-utils';
+import Slider from 'react-slick';
 
 import Card from '../components/card';
 
-const VirtualizeSwipeableViews = virtualize(SwipeableViews);
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { BalanceState } from '../reducers/balance';
 
-function slideRenderer(params: { index: number; key: string }, balance) {
-  const { index, key } = params;
+export type SwipeableViewProps = {
+  balance: BalanceState;
+};
 
-  switch (mod(index, 3)) {
-    case 0:
-      return (
-        <Card
-          key={key}
-          title="Balance"
-          value={balance.current}
-          className="balance"
-        />
-      );
-    case 1:
-      return (
-        <Card
-          key={key}
-          title="Expenses"
-          value={balance.expenses}
-          className="expenses"
-        />
-      );
-    case 2:
-      return (
-        <Card
-          key={key}
-          title="Initial"
-          value={balance.initial}
-          className="initial"
-        />
-      );
-    default:
-      return null;
-  }
+export default function SwipeableView({ balance }: SwipeableViewProps) {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    arrows: false,
+  };
+
+  const cards = [
+    { title: 'Balance', value: balance.current, className: 'balance' },
+    { title: 'Expenses', value: balance.expenses, className: 'expenses' },
+    { title: 'Initial', value: balance.initial, className: 'initial' },
+  ];
+
+  return (
+    <div className="card-swipe">
+      <Slider {...settings}>
+        {cards.map((card) => (
+          <Card
+            key={card.title}
+            title={card.title}
+            value={card.value}
+            className={card.className}
+          />
+        ))}
+      </Slider>
+    </div>
+  );
 }
-
-const SwipeableView = ({ balance }) => (
-  <VirtualizeSwipeableViews
-    className="card-swipe"
-    slideRenderer={(params) => slideRenderer(params, balance)}
-  />
-);
-
-export default connect((state) => ({
-  balance: state.balance,
-}))(SwipeableView);

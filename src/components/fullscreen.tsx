@@ -1,39 +1,49 @@
-import React, { useState } from 'react';
 import classnames from 'classnames';
 import _debounce from 'lodash.debounce';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 
 import Appbar from '../views/appbar';
 
 export type FullscreenProps = {
   title: string;
   children: React.ReactNode;
-  onRequestClose?: () => void;
+  onRequestClose: () => void;
 };
 
-export default function Fullscreen({
-  onRequestClose = () => {},
-  children,
-  title,
-}: FullscreenProps) {
-  const [close, setClose] = useState(false);
+// Add a type for the ref methods you want to expose
+export type FullscreenHandle = {
+  handleClose: () => void;
+};
 
-  const handleClose = () => {
-    setClose(true);
-    const timeout = setTimeout(() => {
-      onRequestClose();
-      clearTimeout(timeout);
-    }, 140);
-  };
+const Fullscreen = forwardRef<FullscreenHandle, FullscreenProps>(
+  ({ onRequestClose = () => {}, children, title }, ref) => {
+    const [close, setClose] = useState(false);
 
-  const _handleClose = _debounce(handleClose, 150, {
-    leading: true,
-    trailing: false,
-  });
+    const handleClose = () => {
+      setClose(true);
+      const timeout = setTimeout(() => {
+        onRequestClose();
+        clearTimeout(timeout);
+      }, 140);
+    };
 
-  return (
-    <div className={classnames('fullscreen-page', { close })}>
-      <Appbar back onRequestClose={_handleClose} title={title} />
-      {children}
-    </div>
-  );
-}
+    const _handleClose = _debounce(handleClose, 150, {
+      leading: true,
+      trailing: false,
+    });
+
+    // Expose handleClose to parent via ref
+    useImperativeHandle(ref, () => ({
+      handleClose,
+    }));
+
+    return (
+      <div className={classnames('fullscreen-page', { close })}>
+        <Appbar back onRequestClose={_handleClose} title={title} />
+        {children}
+      </div>
+    );
+  }
+);
+
+export default Fullscreen;
