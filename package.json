@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vitejs/plugin-react-swc": "^4.2.3",
     "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
     "lodash.debounce": "^4.0.8",
@@ -12,23 +13,21 @@
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5",
     "react-swipeable-views": "^0.13.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "serve": "^10.0.2",
-    "uniqid": "^5.0.3"
+    "uniqid": "^5.0.3",
+    "vite": "^7.3.1",
+    "vite-plugin-svgr": "^4.5.0",
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "scripts": {
-    "start": "serve -d build",
-    "start:dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "heroku-postbuild": "npm run build",
-    "now-build": "react-scripts build && mv build dist"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --watch=false"
   },
   "eslintConfig": {
     "extends": "react-app"
