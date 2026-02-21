@@ -39,7 +39,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "homepage": "https://balance-xp.herokuapp.com/",
+  "homepage": "https://nishanbajracharya.github.io/balance-pwa/",
   "devDependencies": {
     "gh-pages": "^2.0.1"
   }
