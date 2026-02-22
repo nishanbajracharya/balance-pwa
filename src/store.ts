@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 
 import rootReducer from './reducers';
+import { decode } from './common/utils';
 import * as syncActions from './actions/sync';
 
 const persistConfig = {
@@ -25,7 +26,9 @@ const persistedReducer = persistReducer(
   (state: ReturnType<typeof rootReducer> | undefined, action: any) => {
     if (action.type === syncActions.SYNC_ACCOUNT) {
       try {
-        state = JSON.parse(atob(action.payload.code));
+        state = decode<ReturnType<typeof rootReducer> | undefined>(
+          action.payload.code
+        );
       } catch {
         // ignore malformed sync payload
       }
