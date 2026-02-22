@@ -5,6 +5,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
     "classnames": "^2.3.2",
+    "darkreader": "^4.9.120",
     "date-fns": "^4.1.0",
     "lodash.debounce": "^4.0.8",
     "lodash.omit": "^4.5.0",

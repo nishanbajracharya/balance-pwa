@@ -6,6 +6,7 @@ export type CardProps = {
   value?: number;
   className?: string;
   title?: string;
+  isDarkModeEnabled?: boolean;
 };
 
 export default function Card({

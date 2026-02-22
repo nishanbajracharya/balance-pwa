@@ -2,8 +2,10 @@ import classnames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 import ROUTES from '../constants/route';
+import { useDarkMode } from '../common/hooks';
 import Back from '../assets/images/back.svg?react';
 import Sync from '../assets/images/sync.svg?react';
+import DarkMode from '../assets/images/dark-mode.svg?react';
 
 export type AppbarProps = {
   sync?: boolean;
@@ -11,6 +13,8 @@ export type AppbarProps = {
   title?: string;
   onRequestClose?: () => void;
 };
+
+const iconSize = 48;
 
 function Appbar({
   sync = false,
@@ -20,9 +24,12 @@ function Appbar({
 }: AppbarProps) {
   const navigate = useNavigate();
 
+  const { toggleDarkMode } = useDarkMode();
+
   return (
     <div className="appbar">
-      {back && <Back onClick={onRequestClose} />}
+      {back && <Back onClick={onRequestClose} height={iconSize} />}
+      {sync && <Sync onClick={() => navigate(ROUTES.SYNC)} height={iconSize} />}
       <p
         className={classnames('app-title', {
           back,
@@ -31,7 +38,7 @@ function Appbar({
       >
         {title}
       </p>
-      {sync && <Sync onClick={() => navigate(ROUTES.SYNC)} />}
+      <DarkMode onClick={toggleDarkMode} height={iconSize} />
     </div>
   );
 }

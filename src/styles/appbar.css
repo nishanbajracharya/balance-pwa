@@ -1,13 +1,9 @@
 .appbar {
   height: 9vh;
   display: flex;
+  margin: 0 5.33vw;
   align-items: center;
   justify-content: center;
-}
-
-.appbar svg {
-  padding: 8px;
-  width: 7.2vh;
 }
 
 .appbar svg path {
@@ -22,12 +18,4 @@
   font-weight: 700;
   align-items: center;
   justify-content: center;
-}
-
-.appbar .app-title.sync {
-  margin-left: 48px;
-}
-
-.appbar .app-title.back {
-  margin-right: 48px;
 }
