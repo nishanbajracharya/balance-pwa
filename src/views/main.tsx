@@ -27,7 +27,7 @@ export default function Main() {
 
   return (
     <div>
-      <Appbar sync />
+      <Appbar sync darkModeToggle />
       <SwipeableView balance={balance} />
       <p className="expense-section-title">Recent Expenses</p>
       <ul className="expense-section">

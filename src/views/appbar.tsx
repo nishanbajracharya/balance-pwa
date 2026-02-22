@@ -11,6 +11,7 @@ export type AppbarProps = {
   sync?: boolean;
   back?: boolean;
   title?: string;
+  darkModeToggle?: boolean;
   onRequestClose?: () => void;
 };
 
@@ -20,6 +21,7 @@ function Appbar({
   sync = false,
   back = false,
   title = 'Balance',
+  darkModeToggle = false,
   onRequestClose = () => {},
 }: AppbarProps) {
   const navigate = useNavigate();
@@ -38,7 +40,9 @@ function Appbar({
       >
         {title}
       </p>
-      <DarkMode onClick={toggleDarkMode} height={iconSize} />
+      {darkModeToggle && (
+        <DarkMode onClick={toggleDarkMode} height={iconSize} />
+      )}
     </div>
   );
 }
