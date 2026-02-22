@@ -1,2 +1,2 @@
-# Balance
+# Balance XP
 An expense tracking app
