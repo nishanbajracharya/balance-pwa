@@ -1,8 +1,8 @@
 .card {
+  height: 30vh;
   display: flex;
   margin: 0 2vw;
   color: #f7fafd;
-  min-height: 30vh;
   border-radius: 4px;
   align-items: center;
   flex-direction: column;
