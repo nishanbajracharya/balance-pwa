@@ -7,10 +7,9 @@ import ROUTES from './constants/route';
 import Expense from './views/expenses';
 import AddExpense from './views/addExpense';
 import AddBalance from './views/addBalance';
-import { BASE_ROUTE } from './common/config';
 
 const AppRouter: React.FC = () => (
-  <Router basename={BASE_ROUTE}>
+  <Router basename={import.meta.env.BASE_URL}>
     <div className="route-container">
       <Routes>
         <Route path={ROUTES.HOME} element={<Home />} />
