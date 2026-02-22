@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VITE_BASE: /balance-pwa/
+      VITE_BASE: /balance-xp/
 
     steps:
       - name: Checkout
