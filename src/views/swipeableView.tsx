@@ -1,4 +1,4 @@
-import Slider from 'react-slick';
+import Slider, { Settings } from 'react-slick';
 
 import Card from '../components/card';
 
@@ -11,7 +11,7 @@ export type SwipeableViewProps = {
 };
 
 export default function SwipeableView({ balance }: SwipeableViewProps) {
-  const settings = {
+  const settings: Settings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -19,6 +19,8 @@ export default function SwipeableView({ balance }: SwipeableViewProps) {
     slidesToScroll: 1,
     swipeToSlide: true,
     arrows: false,
+    centerMode: true,
+    centerPadding: '20px',
   };
 
   const cards = [
