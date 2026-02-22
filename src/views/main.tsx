@@ -42,15 +42,15 @@ export default function Main() {
           <li className="expense-item center empty">Nothing to show</li>
         )}
       </ul>
-      {expense.list.length > 0 && (
-        <p
-          className="expense-section-more"
-          onClick={() => navigate(ROUTES.EXPENSE)}
-        >
-          more
-        </p>
-      )}
       <div className="button-container">
+        {expense.list.length > 0 && (
+          <p
+            className="expense-section-more"
+            onClick={() => navigate(ROUTES.EXPENSE)}
+          >
+            Show all expenses
+          </p>
+        )}
         <Button
           primary
           label="Add Expense"
