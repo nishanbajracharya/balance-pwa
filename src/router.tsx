@@ -9,7 +9,7 @@ import AddExpense from './views/addExpense';
 import AddBalance from './views/addBalance';
 
 const AppRouter: React.FC = () => (
-  <Router>
+  <Router basename="balance-pwa">
     <div className="route-container">
       <Routes>
         <Route path={ROUTES.HOME} element={<Home />} />
