@@ -5,10 +5,10 @@
 }
 
 .sync-code {
+  padding: 2vw;
   color: #848484;
   margin: 5.33vw;
   overflow: auto;
-  padding: 5.33vw;
   max-height: 21vh;
   border-radius: 4px;
   text-align: center;
@@ -19,7 +19,6 @@
 
 .sync-message {
   color: #848484;
-  font-weight: 300;
   margin: 0 5.33vw;
 }
 
