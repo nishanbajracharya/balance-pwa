@@ -1,6 +1,6 @@
-import uniqid from 'uniqid';
 import { isThisMonth } from 'date-fns';
 
+import { getRandomUUID } from '../common/utils';
 import * as balanceActions from '../actions/balance';
 import * as expenseActions from '../actions/expense';
 import type { BalanceActions } from '../actions/balance';
@@ -49,7 +49,7 @@ export default function balanceReducer(
       return { ...state, initial: getInitialBalance(state, 0) };
 
     case balanceActions.ADD_BALANCE: {
-      const id = uniqid();
+      const id = getRandomUUID();
 
       const thisMonth = state.list.filter((item) =>
         isThisMonth(new Date(state.data[item].addedDate))

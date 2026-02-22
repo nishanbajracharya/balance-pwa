@@ -1,5 +1,4 @@
-import uniqid from 'uniqid';
-
+import { getRandomUUID } from '../common/utils';
 import * as expenseActions from '../actions/expense';
 import type { ExpenseActions } from '../actions/expense';
 
@@ -26,7 +25,7 @@ export default function expenseReducer(
 ): ExpenseState {
   switch (action.type) {
     case expenseActions.ADD_EXPENSE: {
-      const id = uniqid();
+      const id = getRandomUUID();
 
       return {
         ...state,

@@ -8,3 +8,7 @@ export function formatMoney(value: number) {
 export function formatMoneyWithSymbol(value: number, currencySymbol = 'Rs') {
   return `${currencySymbol} ${formatMoney(value)}`;
 }
+
+export function getRandomUUID() {
+  return crypto.randomUUID();
+}
