@@ -18,6 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      VITE_BASE: /balance-pwa/
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
