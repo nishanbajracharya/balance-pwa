@@ -1,11 +1,15 @@
-import React from 'react';
 import { Provider } from 'react-redux';
+import { registerSW } from 'virtual:pwa-register';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Router from './router';
 import { store, persistor } from './store';
 
-const App: React.FC = () => {
+registerSW({
+  immediate: true,
+});
+
+function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -13,6 +17,6 @@ const App: React.FC = () => {
       </PersistGate>
     </Provider>
   );
-};
+}
 
 export default App;
