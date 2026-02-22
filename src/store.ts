@@ -1,6 +1,15 @@
 import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PURGE,
+  PERSIST,
+  REGISTER,
+  REHYDRATE,
+  persistStore,
+  persistReducer,
+} from 'redux-persist';
 
 import rootReducer from './reducers';
 import * as syncActions from './actions/sync';
@@ -31,14 +40,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [
-          'persist/PERSIST',
-          'persist/REHYDRATE',
-          'persist/REGISTER',
-          'persist/FLUSH',
-          'persist/PAUSE',
-          'persist/PURGE',
-        ],
+        ignoredActions: [PERSIST, REHYDRATE, REGISTER, FLUSH, PAUSE, PURGE],
       },
     }),
 });

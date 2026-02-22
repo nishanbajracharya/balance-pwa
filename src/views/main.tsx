@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { isSameDay, startOfMonth } from 'date-fns';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,13 +11,7 @@ import ExpenseItem from '../components/listItem';
 import * as balanceActions from '../actions/balance';
 import type { RootState, AppDispatch } from '../store';
 
-type MainProps = {
-  history: {
-    push: (path: string) => void;
-  };
-};
-
-export default function Main({ history }: MainProps) {
+export default function Main() {
   const dispatch = useDispatch<AppDispatch>();
   const expense = useSelector((state: RootState) => state.expense);
   const balance = useSelector((state: RootState) => state.balance);
@@ -27,6 +22,8 @@ export default function Main({ history }: MainProps) {
       dispatch(balanceActions.resetInitialBalanceForMonth());
     }
   }, [dispatch]);
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -48,7 +45,7 @@ export default function Main({ history }: MainProps) {
       {expense.list.length > 0 && (
         <p
           className="expense-section-more"
-          onClick={() => history.push(ROUTES.EXPENSE)}
+          onClick={() => navigate(ROUTES.EXPENSE)}
         >
           more
         </p>
@@ -57,12 +54,12 @@ export default function Main({ history }: MainProps) {
         <Button
           primary
           label="Add Expense"
-          onClick={() => history.push(ROUTES.ADD_EXPENSE)}
+          onClick={() => navigate(ROUTES.ADD_EXPENSE)}
         />
         <Button
           secondary
           label="Add Balance"
-          onClick={() => history.push(ROUTES.ADD_BALANCE)}
+          onClick={() => navigate(ROUTES.ADD_BALANCE)}
         />
       </div>
     </div>

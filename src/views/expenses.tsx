@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { isToday, subDays, isBefore, isSameDay, isYesterday } from 'date-fns';
 
 import ExpenseItem from '../components/listItem';
@@ -31,13 +32,7 @@ const ExpenseList = ({ title, list, data }: ExpenseListProps) => (
   </div>
 );
 
-type ExpensesProps = {
-  history: {
-    goBack: () => void;
-  };
-};
-
-export default function Expenses({ history }: ExpensesProps) {
+export default function Expenses() {
   const data = useSelector((state: RootState) => state.expense.data);
   const list = useSelector((state: RootState) => state.expense.list);
 
@@ -65,8 +60,10 @@ export default function Expenses({ history }: ExpensesProps) {
     return { ...sortedData, list: sortedList };
   }, [data, list]);
 
+  const navigate = useNavigate();
+
   return (
-    <Fullscreen onRequestClose={() => history.goBack()} title="Expense">
+    <Fullscreen onRequestClose={() => navigate(-1)} title="Expense">
       <div className="scroll-content">
         {segments.list.map((day) => (
           <ExpenseList

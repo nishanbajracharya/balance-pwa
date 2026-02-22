@@ -1,5 +1,6 @@
 import omit from 'lodash.omit';
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Input from '../components/input';
@@ -9,13 +10,7 @@ import Fullscreen from '../components/fullscreen';
 
 import type { RootState, AppDispatch } from '../store';
 
-type SyncProps = {
-  history: {
-    goBack: () => void;
-  };
-};
-
-export default function Sync({ history }: SyncProps) {
+export default function Sync() {
   const dispatch = useDispatch<AppDispatch>();
 
   // Get encoded state excluding _persist
@@ -61,11 +56,10 @@ export default function Sync({ history }: SyncProps) {
     }
   }, [dispatch, localCode]);
 
+  const navigate = useNavigate();
+
   return (
-    <Fullscreen
-      title="Sync Your Balance"
-      onRequestClose={() => history.goBack()}
-    >
+    <Fullscreen title="Sync Your Balance" onRequestClose={() => navigate(-1)}>
       <p className="sync-title">
         Sync your account to keep track of your balance across multiple devices
       </p>

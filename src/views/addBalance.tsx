@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Input from '../components/input';
@@ -8,13 +9,7 @@ import * as balanceActions from '../actions/balance';
 import type { RootState, AppDispatch } from '../store';
 import Fullscreen, { FullscreenHandle } from '../components/fullscreen';
 
-type AddBalanceProps = {
-  history: {
-    goBack: () => void;
-  };
-};
-
-export default function AddBalance({ history }: AddBalanceProps) {
+export default function AddBalance() {
   const dispatch = useDispatch<AppDispatch>();
   const balance = useSelector((state: RootState) => state.balance.current);
 
@@ -28,10 +23,12 @@ export default function AddBalance({ history }: AddBalanceProps) {
     fsRef.current?.handleClose();
   };
 
+  const navigate = useNavigate();
+
   return (
     <Fullscreen
       ref={fsRef}
-      onRequestClose={() => history.goBack()}
+      onRequestClose={() => navigate(-1)}
       title="Add Balance"
     >
       <div className="input-container">

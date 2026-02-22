@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Input from '../components/input';
 import Button from '../components/button';
@@ -7,13 +8,7 @@ import Fullscreen, { FullscreenHandle } from '../components/fullscreen';
 import * as expenseActions from '../actions/expense';
 import type { AppDispatch } from '../store';
 
-type AddExpenseProps = {
-  history: {
-    goBack: () => void;
-  };
-};
-
-export default function AddExpense({ history }: AddExpenseProps) {
+export default function AddExpense() {
   const dispatch = useDispatch<AppDispatch>();
   const fsRef = useRef<FullscreenHandle>(null);
 
@@ -27,10 +22,12 @@ export default function AddExpense({ history }: AddExpenseProps) {
     fsRef.current?.handleClose();
   };
 
+  const navigate = useNavigate();
+
   return (
     <Fullscreen
       ref={fsRef}
-      onRequestClose={() => history.goBack()}
+      onRequestClose={() => navigate(-1)}
       title="Add Expense"
     >
       <div className="input-container">
