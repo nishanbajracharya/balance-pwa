@@ -39,7 +39,7 @@ export default function AddBalance() {
         <Input
           type="number"
           placeholder="How much do you want to add?"
-          onValueChange={(v: string) => setValue(Math.abs(parseInt(v) || 0))}
+          onValueChange={(v: string) => setValue(Math.abs(parseFloat(v) || 0))}
         />
 
         <BalanceItem title="Current Balance" value={balance} />

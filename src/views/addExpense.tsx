@@ -38,7 +38,7 @@ export default function AddExpense() {
         <Input
           type="number"
           placeholder="How much did you spend?"
-          onValueChange={(v: string) => setValue(Math.abs(parseInt(v) || 0))}
+          onValueChange={(v: string) => setValue(Math.abs(parseFloat(v) || 0))}
         />
 
         <Input

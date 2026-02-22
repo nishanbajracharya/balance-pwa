@@ -1,5 +1,6 @@
-import numeral from 'numeral';
 import classnames from 'classnames';
+
+import { formatMoneyWithSymbol } from '../common/utils';
 
 export type CardProps = {
   value?: number;
@@ -15,7 +16,7 @@ export default function Card({
   return (
     <div className={classnames('card', className)}>
       <p className="card-title">{title}</p>
-      <p className="card-value">Rs {numeral(value).format('0,0')}</p>
+      <p className="card-value">{formatMoneyWithSymbol(value)}</p>
     </div>
   );
 }

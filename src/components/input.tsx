@@ -16,7 +16,6 @@ export type InputProps = {
 
 const Component = ({
   type,
-  value,
   onBlur,
   onFocus,
   onChange,
@@ -26,7 +25,6 @@ const Component = ({
 }: InputProps) =>
   multiline ? (
     <textarea
-      value={value}
       onBlur={onBlur}
       onFocus={onFocus}
       onChange={onChange}
@@ -36,7 +34,6 @@ const Component = ({
   ) : (
     <input
       type={type}
-      value={value}
       onBlur={onBlur}
       onFocus={onFocus}
       onChange={onChange}
@@ -47,7 +44,6 @@ const Component = ({
 
 export default function Input({
   type,
-  value = '',
   placeholder,
   multiline = false,
   onBlur = () => {},
@@ -78,7 +74,6 @@ export default function Input({
   return (
     <Component
       type={type}
-      value={value}
       onBlur={_onBlur}
       onFocus={_onFocus}
       onChange={_onChange}
