@@ -7,15 +7,15 @@ import Input from '../components/input';
 import Button from '../components/button';
 import * as syncActions from '../actions/sync';
 import Fullscreen from '../components/fullscreen';
-
 import type { RootState, AppDispatch } from '../store';
+import { copyToClipboard, encode } from '../common/utils';
 
 export default function Sync() {
   const dispatch = useDispatch<AppDispatch>();
 
   // Get encoded state excluding _persist
   const code = useSelector((state: RootState) =>
-    btoa(JSON.stringify(omit(state, '_persist')))
+    encode(omit(state, '_persist'))
   );
 
   const lastSynced = useSelector(
@@ -23,31 +23,6 @@ export default function Sync() {
   );
 
   const [localCode, setLocalCode] = useState<string>('');
-
-  const copyToClipboard = async (text: string) => {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      try {
-        await navigator.clipboard.writeText(text);
-        console.log('Copied to clipboard!');
-      } catch (err) {
-        console.error('Failed to copy: ', err);
-      }
-    } else {
-      // Fallback for older browsers
-      const textField = document.createElement('textarea');
-      textField.value = text;
-      textField.style.position = 'fixed'; // prevent scrolling
-      document.body.appendChild(textField);
-      textField.select();
-      try {
-        document.execCommand('copy'); // deprecated, fallback only
-        console.log('Copied to clipboard (fallback)');
-      } catch (err) {
-        console.error('Fallback copy failed', err);
-      }
-      document.body.removeChild(textField);
-    }
-  };
 
   const handleSync = useCallback(() => {
     if (localCode.trim()) {

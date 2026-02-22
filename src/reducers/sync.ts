@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
-import type { SyncActions } from '../actions/sync';
+
 import * as syncActions from '../actions/sync';
+import type { SyncActions } from '../actions/sync';
 
 export type SyncState = {
   lastSynced: string | null;
